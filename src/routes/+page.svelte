@@ -1,5 +1,5 @@
 <script>
-    import PokemanCard from "./components/pokemanCard.svelte";
+    import PokemanCard from "../components/pokemanCard.svelte";
 
     export let data;
 
