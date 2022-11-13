@@ -1,8 +1,7 @@
 <script>
-    import { pokemon } from "../stores/pokestore"; //{} means named export
-    //console.log($pokemon); //since the data is writable, in order to get that data, we added $ sign. 
-    //$ sign also helps to keep updated with the latest changes (reactivity)
     import PokemanCard from "./components/pokemanCard.svelte";
+
+    export let data;
 
     let searchTerm = "";
     let filteredPokemon = [];
@@ -10,10 +9,9 @@
     $: { //reactivity, if binding in input field change, svelte should pick the changes as well so that we can do
         //whatever we want from that input value
         if (searchTerm) {
-            filteredPokemon = $pokemon.filter(pokapokaman => pokapokaman.name.toLowerCase().includes(searchTerm.toLowerCase())); 
-            //from each pokapokaman from $pokemon, filter the searchTerm and if keyword includes in searchterm, return/put that into that variable
+            filteredPokemon = data.pokemon.filter(pokapokaman => pokapokaman.name.toLowerCase().includes(searchTerm.toLowerCase())); 
         }else {
-            filteredPokemon = [...$pokemon] //using spread operator to make a copy of pokemon and put it to filteredPokemon variable
+            filteredPokemon = [...data.pokemon] 
         }
     }
 
